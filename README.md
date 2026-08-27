@@ -1,4 +1,3 @@
-````markdown
 # ECG Arrhythmia Mixture-of-Experts (MoE) Classifier
 
 ## Overview
@@ -24,7 +23,7 @@ The primary research question is:
 
 > Can a Mixture-of-Experts architecture improve ECG arrhythmia classification on an imbalanced dataset by allowing expert networks to learn complementary or specialized representations?
 
-The architecture contains five experts for a five-class arrhythmia problem. However, experts are **not explicitly assigned to specific arrhythmia classes**. Their specialization is learned automatically through backpropagation.
+The architecture contains five experts for a five-class arrhythmia problem. However, the experts are **not explicitly assigned to specific arrhythmia classes**. Their specialization is learned automatically through backpropagation.
 
 ---
 
@@ -55,7 +54,6 @@ The architecture contains five experts for a five-class arrhythmia problem. Howe
                         |
                         v
               Arrhythmia Prediction
-````
 
 ### CNN Feature Extractor
 
@@ -110,12 +108,12 @@ The entire architecture is trained end-to-end using backpropagation.
 
 ## Results
 
-| Metric                         |      Result |
-| ------------------------------ | ----------: |
-| Peak Training Accuracy         | **99.901%** |
-| Peak Testing Accuracy          | **99.957%** |
-| Minimum Average Testing Loss   |  **0.0015** |
-| Lowest 100-Batch Training Loss |  **0.0006** |
+| Metric | Result |
+| --- | --- |
+| Peak Training Accuracy | **99.901%** |
+| Peak Testing Accuracy | **99.957%** |
+| Minimum Average Testing Loss | **0.0015** |
+| Lowest 100-Batch Training Loss | **0.0006** |
 
 The model achieved strong aggregate classification performance. However, because the dataset is imbalanced, overall accuracy alone is not sufficient to determine whether the MoE architecture benefits minority classes.
 
@@ -133,16 +131,16 @@ Mixture-of-Experts CNN
 
 Evaluation will include:
 
-* Accuracy
-* Training and testing loss
-* Per-class precision
-* Per-class recall
-* Per-class F1 score
-* Macro and weighted F1
-* Confusion matrix
-* Minority-class performance
-* Router weight distributions
-* Expert utilization
+- Accuracy
+- Training and testing loss
+- Per-class precision
+- Per-class recall
+- Per-class F1 score
+- Macro and weighted F1
+- Confusion matrix
+- Minority-class performance
+- Router weight distributions
+- Expert utilization
 
 ---
 
@@ -152,9 +150,9 @@ Router outputs will be analyzed by true arrhythmia class to determine whether ex
 
 Possible behaviors include:
 
-* **Class specialization:** experts become associated with particular arrhythmias
-* **Feature specialization:** experts focus on different ECG characteristics
-* **Distributed specialization:** multiple experts collaborate across classes
+- **Class specialization:** experts become associated with particular arrhythmias
+- **Feature specialization:** experts focus on different ECG characteristics
+- **Distributed specialization:** multiple experts collaborate across classes
 
 The analysis will also check for **expert collapse**, where the router relies too heavily on only one or two experts.
 
@@ -174,12 +172,12 @@ The GPU-accelerated MoE model has been implemented and trained in PyTorch.
 
 Current architecture:
 
-* Shared 1D CNN feature extractor
-* Adaptive average pooling
-* Learned softmax router
-* Five MLP expert networks
-* Soft weighted expert aggregation
-* Five-class classification head
+- Shared 1D CNN feature extractor
+- Adaptive average pooling
+- Learned softmax router
+- Five MLP expert networks
+- Soft weighted expert aggregation
+- Five-class classification head
 
 The project is currently in the **evaluation and analysis stage**.
 
@@ -187,15 +185,12 @@ The project is currently in the **evaluation and analysis stage**.
 
 ## Next Steps
 
-* Generate per-class precision, recall, and F1 scores
-* Construct confusion matrices
-* Analyze minority-class performance
-* Measure router weights by arrhythmia class
-* Evaluate expert utilization
-* Check for expert collapse
-* Compare results against the original CNN-MLP baseline
+- Generate per-class precision, recall, and F1 scores
+- Construct confusion matrices
+- Analyze minority-class performance
+- Measure router weights by arrhythmia class
+- Evaluate expert utilization
+- Check for expert collapse
+- Compare results against the original CNN-MLP baseline
 
 The broader goal is to determine whether the MoE architecture provides meaningful advantages beyond high overall accuracy, particularly for imbalanced ECG classification.
-
-```
-```
